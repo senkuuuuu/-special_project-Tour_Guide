@@ -21,7 +21,7 @@ pip install -r requirements.txt
 https://drive.google.com/file/d/11YHYILDclYuN20-hzARWdLgF-pbb5NQ-/view?usp=sharing
 ```
 
----
+--- 
 
 ### ⭐ Features
 - has voice input
