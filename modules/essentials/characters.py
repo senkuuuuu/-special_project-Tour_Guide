@@ -8,6 +8,7 @@ class Character:
         self.character_idle_sprites = fetch('sprites/idle').begin() 
         self.character_talking_sprites = fetch('sprites/talking').begin()
         self.character_thinking_sprites = fetch('sprites/thinking').begin()
+        self.background_image_sprites= fetch('sprites/background').begin()
 
         #fetching buttons
         self.buttons_sprites = fetch('sprites/buttons').begin()
@@ -16,6 +17,9 @@ class Character:
         self.background = (0,0,0)
 
         #dimensions
+        self.background_image_dimension = (1000, 750)
+        self.background_image_position = (500,350)
+
         self.character_dimension = (500, 700)
         self.character_position = (275, 400)
 
@@ -23,6 +27,11 @@ class Character:
         self.recording_scale = (50, 50)
         self.mic_N_recording_position = (520, 40)
         
+        #loading the pygame image for background
+        self.background_image = self.background_image_sprites[0]
+        self.background_image = pygame.image.load(self.background_image)
+        self.background_image = pygame.transform.scale(self.background_image, self.background_image_dimension)
+        self.background_image_rect = self.background_image.get_rect(center=(self.background_image_position))
 
         #loading the pygame image for buttons
         self.mic = pygame.image.load(self.buttons_sprites[0])
@@ -46,7 +55,8 @@ class Character:
         character_image = pygame.transform.scale(character_image, self.character_dimension)
         character_image_rect = character_image.get_rect(center=self.character_position)
 
-        screen.fill(self.background)
+        #screen.fill(self.background)
+        screen.blit(self.background_image, self.background_image_rect)
         screen.blit(character_image, character_image_rect)
         screen.blit(self.mic_status, self.mic_status_rect)
     
@@ -61,7 +71,8 @@ class Character:
         character_image = pygame.transform.scale(character_image, self.character_dimension)
         character_image_rect = character_image.get_rect(center=self.character_position)
 
-        screen.fill(self.background)
+        #screen.fill(self.background)
+        screen.blit(self.background_image, self.background_image_rect)
         screen.blit(character_image, character_image_rect)
     
     def thinking(self, screen):
@@ -69,7 +80,8 @@ class Character:
         character_image = pygame.transform.scale(character_image, self.character_dimension)
         character_image_rect = character_image.get_rect(center=self.character_position)
 
-        screen.fill(self.background)
+        #screen.fill(self.background)
+        screen.blit(self.background_image, self.background_image_rect)
         screen.blit(character_image, character_image_rect)
 
     def button_clicked(self, mousepos):

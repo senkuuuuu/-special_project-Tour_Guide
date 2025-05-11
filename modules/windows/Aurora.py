@@ -83,7 +83,7 @@ class Aurora:
     async def voice_to_text(self, start_voice_to_text, start_generating_ai_response):
         while self.running:
             await start_voice_to_text.wait()
-            self.user_input = stt().convert()
+            self.user_input = asyncio.to_thread(stt().convert())
             print(self.user_input)
 
             start_voice_to_text.clear()
