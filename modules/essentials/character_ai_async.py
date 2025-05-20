@@ -3,7 +3,7 @@ import asyncio
 
 class AI:
     def __init__(self, input):
-        genai.configure(api_key="AIzaSyDs21sHDH9VGvVEgYXnm12E-zyLE8NjQXw")
+        genai.configure(api_key="api_key")
         self.model = genai.GenerativeModel("gemini-1.5-flash") 
         self.message = input
         self.chat_id = None
